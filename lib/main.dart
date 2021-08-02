@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travling_app/screens/catagories_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:travling_app/screens/category_trips_screen.dart';
 
 //this is a new code
 void main() {
@@ -8,6 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static final screenRoute = '/category-trips';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +40,13 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
       ),
-      home: CatagoriesScreen(),
+      //home: CatagoriesScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => CatagoriesScreen(),
+        //به دلى خۆمان ناوه‌كی ده‌ده‌ینێ وه‌ك دۆمه‌ینه
+        '/category-trips': (ctx) => CategoryTripsScreen(),
+      },
     );
   }
 }

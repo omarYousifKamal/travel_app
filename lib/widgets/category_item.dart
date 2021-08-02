@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import '../screens/category_trips_screen.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -10,11 +11,8 @@ class CategoryItem extends StatelessWidget {
       : super(key: key);
   //ناوی نوێ لۆ كۆنتێكسته‌كه‌ هه‌تا هه‌مان ناوی قه‌دیمه‌كه‌ی نه‌بی وه‌ك بیلده‌كه‌ی كۆنتێكستی خواێ
   void selectCategory(BuildContext ctx) {
-    Navigator.of(ctx).push(MaterialPageRoute(
-        builder: (c) => CategoryTripsScreen(
-              categoryId: id,
-              categoryTitle: title,
-            )));
+    Navigator.of(ctx)
+        .pushNamed('/category-trips', arguments: {'id': id, 'title': title});
   }
 
   @override
