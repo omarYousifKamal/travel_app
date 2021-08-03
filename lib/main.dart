@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travling_app/screens/catagories_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:travling_app/screens/category_trips_screen.dart';
+import 'package:travling_app/screens/trip_detail_screen.dart';
 
 //this is a new code
 void main() {
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         '/': (ctx) => CatagoriesScreen(),
         //به دلى خۆمان ناوه‌كی ده‌ده‌ینێ وه‌ك دۆمه‌ینه
         '/category-trips': (ctx) => CategoryTripsScreen(),
+        '/trip-detail': (ctx) => TripDetailScreen(),
       },
     );
   }

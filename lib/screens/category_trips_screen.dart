@@ -19,11 +19,13 @@ class CategoryTripsScreen extends StatelessWidget {
         body: ListView.builder(
           itemBuilder: (ctx, index) {
             return TripItem(
-                title: fillterTrips[index].title,
-                imageUrl: fillterTrips[index].imageUrl,
-                duratioon: fillterTrips[index].duration,
-                tripType: fillterTrips[index].tripType,
-                season: fillterTrips[index].season);
+              title: fillterTrips[index].title,
+              imageUrl: fillterTrips[index].imageUrl,
+              duratioon: fillterTrips[index].duration,
+              tripType: fillterTrips[index].tripType,
+              season: fillterTrips[index].season,
+              id: fillterTrips[index].id,
+            );
           },
           itemCount: fillterTrips.length,
         ));

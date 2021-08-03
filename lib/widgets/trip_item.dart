@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:travling_app/models/trip.dart';
+import 'package:travling_app/screens/trip_detail_screen.dart';
 
 class TripItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duratioon;
@@ -14,12 +16,55 @@ class TripItem extends StatelessWidget {
       required this.imageUrl,
       required this.duratioon,
       required this.tripType,
-      required this.season});
-  void selecTrip() {}
+      required this.season,
+      required this.id});
+
+  String get seasonText {
+    if (season == Season.Winter) {
+      return 'شتاء';
+    }
+    if (season == Season.Summer) {
+      return 'صيف';
+    }
+    if (season == Season.Autumn) {
+      return 'خريف';
+    }
+    if (season == Season.Spring) {
+      return 'ربيع';
+    } else
+      return 'none';
+  }
+
+  String get tripTypeText {
+    if (tripType == TripType.Exploration) {
+      return 'استكشاف';
+    }
+    if (tripType == TripType.Recovery) {
+      return 'نقاهة';
+    }
+    if (tripType == TripType.Activities) {
+      return 'انشطة';
+    }
+    if (tripType == TripType.Therapy) {
+      return 'معالجة';
+    } else
+      return 'none';
+  }
+
+  // void selectTrip(BuildContext context) {
+  //   Navigator.of(context).pushNamed('/trip-detail', arguments: {'id': id});
+  // }
+  void selectTrip(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      TripDetailScreen.screenRoute,
+      arguments: id,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selecTrip,
+      onTap: () => selectTrip(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 7,
@@ -63,6 +108,50 @@ class TripItem extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.today,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      SizedBox(
+                        width: 0.01 * MediaQuery.of(context).size.width,
+                      ),
+                      Text('$duratioon ايام')
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.wb_sunny,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      SizedBox(
+                        width: 0.01 * MediaQuery.of(context).size.width,
+                      ),
+                      Text(seasonText),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.family_restroom,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      SizedBox(
+                        width: 0.01 * MediaQuery.of(context).size.width,
+                      ),
+                      Text(tripTypeText),
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ),
